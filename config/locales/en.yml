@@ -19,6 +19,10 @@ en:
     eyebrow: "Portfolio"
     title: "Pages, illustrations, covers, and commissions."
     all: "All"
+    filters: "Portfolio filters"
+    count:
+      one: "1 work"
+      other: "%{count} works"
     empty: "No public artwork registered yet."
     image_pending: "Image pending"
     close: "Close"

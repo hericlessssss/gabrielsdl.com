@@ -19,6 +19,10 @@ pt:
     eyebrow: "Portfólio"
     title: "Páginas, ilustrações, capas e commissions."
     all: "Tudo"
+    filters: "Filtros do portfólio"
+    count:
+      one: "1 trabalho"
+      other: "%{count} trabalhos"
     empty: "Nenhuma arte pública cadastrada ainda."
     image_pending: "Imagem pendente"
     close: "Fechar"
