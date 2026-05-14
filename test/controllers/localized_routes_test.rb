@@ -29,6 +29,16 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "dd", text: "Perseverance"
   end
 
+  test "portuguese copy is readable" do
+    get about_path(locale: :pt)
+
+    assert_response :success
+    assert_includes response.body, "histórias em quadrinhos"
+    assert_includes response.body, "lápis"
+    assert_includes response.body, "Perseverança"
+    assert_no_match(/Ã|Â|�/, response.body)
+  end
+
   test "portfolio renders with category filters" do
     assert_equal "/en/portfolio", portfolio_path(locale: :en)
 
