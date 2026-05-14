@@ -90,8 +90,9 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "nav[aria-label='Portfolio filters']"
-    assert_select "a[data-turbo-frame='portfolio_artworks']", text: "Sample pages"
-    assert_select "turbo-frame#portfolio_artworks"
+    assert_select "a[data-turbo-frame='portfolio_content']", text: "Sample pages"
+    assert_select "a[aria-current='page']", text: "All"
+    assert_select "turbo-frame#portfolio_content"
     assert_select "p", text: "2 works"
     assert_select "[data-controller='lightbox']"
     assert_includes response.body, "data-lightbox-target=\"item\""
@@ -102,10 +103,12 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "h2", text: "Runika"
     assert_select "h3", text: "Runika page 1"
 
-    get portfolio_path(locale: :en, category: "sample-pages"), headers: { "Turbo-Frame" => "portfolio_artworks" }
+    get portfolio_path(locale: :en, category: "sample-pages"), headers: { "Turbo-Frame" => "portfolio_content" }
 
     assert_response :success
-    assert_select "turbo-frame#portfolio_artworks"
+    assert_select "turbo-frame#portfolio_content"
+    assert_select "a[aria-current='page']", text: "Sample pages"
+    assert_select "a[aria-current='page']", text: "All", count: 0
     assert_select "p", text: "1 work"
     assert_select "h2", text: "Runika"
     assert_select "h3", text: "Runika page 1"

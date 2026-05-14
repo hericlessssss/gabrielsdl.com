@@ -14,26 +14,10 @@ Portfolio Rails fullstack de Gabriel SDL, quadrinista e ilustrador.
 
 ## Desenvolvimento com Docker
 
-O ambiente local atual nao tem Ruby instalado. Use Docker para rodar PostgreSQL e Rails.
+O ambiente local atual nao tem Ruby instalado. Use Docker Compose para rodar PostgreSQL e Rails.
 
 ```powershell
-docker run -d --name gabrielsdl-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16-alpine
-```
-
-```powershell
-$repo = (Get-Location).Path -replace '\\','/'
-docker run --rm -it -v "${repo}:/app" -v gabrielsdl-bundle:/usr/local/bundle -w /app -p 3000:3000 -e DATABASE_URL=postgres://postgres:postgres@host.docker.internal:55432/gabrielsdl_development ruby:3.3-bookworm bash
-```
-
-Dentro do container:
-
-```bash
-apt-get update
-apt-get install -y --no-install-recommends libpq-dev
-bundle install
-bin/rails db:prepare
-bin/rails db:seed
-bin/rails server -b 0.0.0.0
+docker compose up -d web
 ```
 
 Acesse `http://localhost:3000/pt`.

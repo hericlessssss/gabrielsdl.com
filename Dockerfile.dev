@@ -1,0 +1,11 @@
+FROM ruby:3.3-bookworm
+
+WORKDIR /app
+
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y libpq-dev libvips && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+EXPOSE 3000
+
+CMD ["bash", "-lc", "bundle install && bin/rails db:prepare && bin/rails db:seed && rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0"]

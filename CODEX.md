@@ -274,30 +274,24 @@ Validacao visual:
 
 ## Como Rodar
 
-O ambiente atual nao possui Ruby instalado no Windows. O fluxo validado usa Docker.
+O ambiente atual nao possui Ruby instalado no Windows. O fluxo validado usa Docker Compose.
 
-1. Subir PostgreSQL:
-
-```powershell
-docker run -d --name gabrielsdl-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16-alpine
-```
-
-2. Abrir um container Ruby montando o projeto:
+1. Subir PostgreSQL e Rails:
 
 ```powershell
-$repo = (Get-Location).Path -replace '\\','/'
-docker run --rm -it -v "${repo}:/app" -v gabrielsdl-bundle:/usr/local/bundle -w /app -p 3000:3000 -e DATABASE_URL=postgres://postgres:postgres@host.docker.internal:55432/gabrielsdl_development ruby:3.3-bookworm bash
+docker compose up -d web
 ```
 
-3. Dentro do container:
+2. Acessar:
+
+```powershell
+http://localhost:3000/pt
+```
+
+3. Comandos dentro do container web:
 
 ```bash
-apt-get update
-apt-get install -y --no-install-recommends libpq-dev
-bundle install
-bin/rails db:prepare
-bin/rails db:seed
-bin/rails server -b 0.0.0.0
+docker compose exec web bash
 ```
 
 ## Como Rodar Testes
