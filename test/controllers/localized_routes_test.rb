@@ -14,6 +14,8 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "h1", text: /Sequential art/
+    assert_select ".halftone-field"
+    assert_select ".scratch-line"
   end
 
   test "portfolio renders with category filters" do

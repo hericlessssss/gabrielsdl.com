@@ -1,7 +1,7 @@
 <% if artworks.any? %>
   <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-controller="lightbox">
     <% artworks.each do |artwork| %>
-      <article class="group border border-stone-800 bg-neutral-900 transition hover:-translate-y-1 hover:border-orange-300/70">
+      <article class="panel-frame group transition hover:-translate-y-1 hover:border-orange-300/70">
         <% if artwork.image.attached? %>
           <button
             type="button"

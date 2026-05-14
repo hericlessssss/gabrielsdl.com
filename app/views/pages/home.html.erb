@@ -1,7 +1,8 @@
-<section class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-  <div>
+<section class="halftone-field grid min-h-[72vh] gap-10 border-b border-stone-800 pb-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+  <div class="relative z-10">
     <p class="mb-4 text-sm font-bold uppercase text-orange-300"><%= t("home.eyebrow") %></p>
     <h1 class="max-w-4xl text-5xl font-black uppercase leading-none text-white md:text-7xl"><%= t("home.title") %></h1>
+    <div class="scratch-line mt-6"></div>
     <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-300"><%= t("home.intro") %></p>
     <div class="mt-8 flex flex-wrap gap-3">
       <%= link_to t("home.cta_portfolio"), portfolio_path(locale: I18n.locale), class: "bg-orange-500 px-5 py-3 text-sm font-black uppercase text-neutral-950 hover:bg-orange-400" %>
@@ -9,13 +10,29 @@
     </div>
   </div>
 
-  <div class="border border-stone-800 bg-neutral-900 p-5">
-    <p class="text-sm uppercase text-stone-500"><%= t("home.focus") %></p>
-    <ul class="mt-4 space-y-3 text-2xl font-black uppercase text-white">
-      <li>Sample pages</li>
-      <li>Sequential art</li>
-      <li>Commissions</li>
-    </ul>
+  <div class="relative z-10 grid grid-cols-3 gap-3 pb-8">
+    <% @recent_artworks.first(3).each do |artwork| %>
+      <figure class="panel-frame ink-panel min-h-80 p-2">
+        <% if artwork.image.attached? %>
+          <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "h-full min-h-80 w-full object-cover grayscale" %>
+        <% else %>
+          <div class="grid h-full min-h-80 place-items-center bg-neutral-900 p-4 text-center text-xs font-black uppercase text-stone-500">
+            <%= artwork.title %>
+          </div>
+        <% end %>
+      </figure>
+    <% end %>
+
+    <% if @recent_artworks.empty? %>
+      <div class="panel-frame ink-panel col-span-3 p-6">
+        <p class="text-sm uppercase text-stone-500"><%= t("home.focus") %></p>
+        <ul class="mt-4 space-y-3 text-2xl font-black uppercase text-white">
+          <li>Sample pages</li>
+          <li>Sequential art</li>
+          <li>Commissions</li>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </section>
 

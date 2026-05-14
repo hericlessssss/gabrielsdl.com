@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+@layer components {
+  .site-shell {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(249, 115, 22, 0.12), transparent 28rem),
+      radial-gradient(circle at 88% 10%, rgba(139, 92, 246, 0.12), transparent 24rem),
+      #050505;
+  }
+
+  .halftone-field {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .halftone-field::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+    background-size: 10px 10px;
+    mask-image: linear-gradient(90deg, transparent, black 18%, black 72%, transparent);
+    opacity: 0.35;
+  }
+
+  .ink-panel {
+    box-shadow: 8px 8px 0 rgba(249, 115, 22, 0.8);
+    clip-path: polygon(0 0, 100% 2%, 96% 100%, 3% 96%);
+  }
+
+  .panel-frame {
+    border: 1px solid rgba(214, 211, 209, 0.18);
+    background: rgba(23, 23, 23, 0.82);
+  }
+
+  .panel-frame:nth-child(even) {
+    transform: translateY(1.5rem);
+  }
+
+  .scratch-line {
+    background: linear-gradient(90deg, #f97316, #8b5cf6);
+    height: 4px;
+    width: min(10rem, 42vw);
+  }
+}
