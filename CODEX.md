@@ -321,6 +321,7 @@ Uma tarefa so termina quando:
 - Confirmar email publico de contato.
 - Confirmar URL final do Instagram e demais redes.
 - Confirmar dominio e conta de hospedagem.
+- Preparar seguranca basica da VPS antes do deploy publico.
 - Definir traducoes finais em ingles.
 - Definir quais ilustracoes entram no primeiro lancamento.
 - Otimizar imagens grandes antes de qualquer deploy.
