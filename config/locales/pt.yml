@@ -21,6 +21,7 @@ pt:
     all: "Tudo"
     empty: "Nenhuma arte pública cadastrada ainda."
     image_pending: "Imagem pendente"
+    close: "Fechar"
   about:
     eyebrow: "Sobre"
     title: "Gabriel SDL"

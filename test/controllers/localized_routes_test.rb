@@ -19,13 +19,27 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
   test "portfolio renders with category filters" do
     assert_equal "/en/portfolio", portfolio_path(locale: :en)
 
-    PortfolioCategory.create!(slug: "sample-pages", sort_order: 1).tap do |category|
+    category = PortfolioCategory.create!(slug: "sample-pages", sort_order: 1).tap do |category|
       category.translations.create!(locale: "en", name: "Sample pages")
     end
+    artwork = Artwork.create!(
+      slug: "runika-page-1",
+      portfolio_category: category,
+      visibility: "public",
+      sort_order: 1
+    )
+    artwork.translations.create!(
+      locale: "en",
+      title: "Runika page 1",
+      alt_text: "Runika sample page"
+    )
 
     get portfolio_path(locale: :en)
 
     assert_response :success
     assert_select "a", text: "Sample pages"
+    assert_select "[data-controller='lightbox']"
+    assert_select "dialog [data-lightbox-target='title']"
+    assert_select "h2", text: "Runika page 1"
   end
 end

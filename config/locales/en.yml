@@ -21,6 +21,7 @@ en:
     all: "All"
     empty: "No public artwork registered yet."
     image_pending: "Image pending"
+    close: "Close"
   about:
     eyebrow: "About"
     title: "Gabriel SDL"

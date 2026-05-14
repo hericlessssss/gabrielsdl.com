@@ -1,9 +1,18 @@
 <% if artworks.any? %>
-  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-controller="lightbox">
     <% artworks.each do |artwork| %>
-      <article class="border border-stone-800 bg-neutral-900">
+      <article class="group border border-stone-800 bg-neutral-900 transition hover:-translate-y-1 hover:border-orange-300/70">
         <% if artwork.image.attached? %>
-          <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "aspect-[3/4] w-full object-cover" %>
+          <button
+            type="button"
+            class="block w-full cursor-zoom-in text-left"
+            data-action="lightbox#open"
+            data-lightbox-src="<%= url_for(artwork.image) %>"
+            data-lightbox-alt="<%= artwork.alt_text %>"
+            data-lightbox-title="<%= artwork.title %>"
+          >
+            <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "aspect-[3/4] w-full object-cover saturate-90 transition group-hover:saturate-100" %>
+          </button>
         <% else %>
           <div class="grid aspect-[3/4] place-items-center bg-neutral-800 p-6 text-center text-sm uppercase text-stone-500">
             <%= t("portfolio.image_pending") %>
@@ -19,6 +28,22 @@
       </article>
     <% end %>
   </div>
+
+  <dialog
+    class="m-auto max-h-[92vh] w-[min(92vw,1100px)] bg-transparent p-0 backdrop:bg-neutral-950/90"
+    data-lightbox-target="dialog"
+    data-action="click->lightbox#closeOnBackdrop cancel->lightbox#close"
+  >
+    <figure class="border border-stone-700 bg-neutral-950 p-3">
+      <div class="mb-3 flex items-center justify-between gap-4">
+        <figcaption class="text-sm font-black uppercase text-white" data-lightbox-target="title"></figcaption>
+        <button type="button" class="border border-stone-700 px-3 py-2 text-xs font-black uppercase text-white hover:border-orange-300" data-action="lightbox#close">
+          <%= t("portfolio.close") %>
+        </button>
+      </div>
+      <img class="max-h-[80vh] w-full object-contain" alt="" data-lightbox-target="image">
+    </figure>
+  </dialog>
 <% else %>
   <p class="border border-stone-800 bg-neutral-900 p-6 text-stone-400"><%= t("portfolio.empty") %></p>
 <% end %>
