@@ -1,22 +1,22 @@
-<section class="halftone-field grid min-h-[72vh] gap-10 border-b border-stone-800 pb-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+<section class="halftone-field grid gap-10 border-b border-stone-800 pb-10 sm:pb-14 lg:min-h-[72vh] lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
   <div class="relative z-10">
     <p class="mb-4 text-sm font-bold uppercase text-orange-300"><%= t("home.eyebrow") %></p>
-    <h1 class="max-w-4xl text-5xl font-black uppercase leading-none text-white md:text-7xl"><%= t("home.title") %></h1>
+    <h1 class="max-w-4xl text-4xl font-black uppercase leading-none text-white sm:text-5xl md:text-7xl"><%= t("home.title") %></h1>
     <div class="scratch-line mt-6"></div>
-    <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-300"><%= t("home.intro") %></p>
+    <p class="mt-6 max-w-2xl text-base leading-7 text-stone-300 sm:text-lg sm:leading-8"><%= t("home.intro") %></p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <%= link_to t("home.cta_portfolio"), portfolio_path(locale: I18n.locale), class: "bg-orange-500 px-5 py-3 text-sm font-black uppercase text-neutral-950 hover:bg-orange-400" %>
-      <%= link_to t("home.cta_contact"), contact_path(locale: I18n.locale), class: "border border-stone-600 px-5 py-3 text-sm font-black uppercase text-stone-100 hover:border-stone-200" %>
+      <%= link_to t("home.cta_portfolio"), portfolio_path(locale: I18n.locale), class: "w-full bg-orange-500 px-5 py-3 text-center text-sm font-black uppercase text-neutral-950 hover:bg-orange-400 sm:w-auto" %>
+      <%= link_to t("home.cta_contact"), contact_path(locale: I18n.locale), class: "w-full border border-stone-600 px-5 py-3 text-center text-sm font-black uppercase text-stone-100 hover:border-stone-200 sm:w-auto" %>
     </div>
   </div>
 
-  <div class="relative z-10 grid grid-cols-3 gap-3 pb-8">
+  <div class="relative z-10 grid grid-cols-2 gap-3 pb-6 sm:grid-cols-3 sm:pb-8">
     <% @recent_artworks.first(3).each do |artwork| %>
-      <figure class="panel-frame ink-panel min-h-80 p-2">
+      <figure class="panel-frame ink-panel min-h-56 p-2 sm:min-h-72 lg:min-h-80">
         <% if artwork.image.attached? %>
-          <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "h-full min-h-80 w-full object-cover grayscale" %>
+          <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "h-full min-h-56 w-full object-cover grayscale sm:min-h-72 lg:min-h-80" %>
         <% else %>
-          <div class="grid h-full min-h-80 place-items-center bg-neutral-900 p-4 text-center text-xs font-black uppercase text-stone-500">
+          <div class="grid h-full min-h-56 place-items-center bg-neutral-900 p-4 text-center text-xs font-black uppercase text-stone-500 sm:min-h-72 lg:min-h-80">
             <%= artwork.title %>
           </div>
         <% end %>
@@ -36,8 +36,8 @@
   </div>
 </section>
 
-<section class="mt-16">
-  <div class="mb-6 flex items-end justify-between gap-4">
+<section class="mt-12 sm:mt-16">
+  <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
     <h2 class="text-2xl font-black uppercase"><%= t("home.latest") %></h2>
     <%= link_to t("home.view_all"), portfolio_path(locale: I18n.locale), class: "text-sm font-bold uppercase text-orange-300 hover:text-orange-200" %>
   </div>

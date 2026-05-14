@@ -38,6 +38,16 @@
     transform: translateY(1.5rem);
   }
 
+  @media (max-width: 639px) {
+    .panel-frame:nth-child(even) {
+      transform: translateY(0.75rem);
+    }
+
+    .ink-panel {
+      box-shadow: 5px 5px 0 rgba(249, 115, 22, 0.8);
+    }
+  }
+
   .scratch-line {
     background: linear-gradient(90deg, #f97316, #8b5cf6);
     height: 4px;
