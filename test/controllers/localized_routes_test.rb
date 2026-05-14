@@ -69,4 +69,37 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "h2", text: "Runika page 1"
     assert_select "h2", text: "Venom 2025", count: 0
   end
+
+  test "contact renders direct links and stores valid message" do
+    get contact_path(locale: :en)
+
+    assert_response :success
+    assert_select "a[href='mailto:contact@gabrielsdl.com']", text: "contact@gabrielsdl.com"
+    assert_select "a[href='https://www.instagram.com/gskovu_/']", text: "@gskovu_"
+
+    assert_difference "ContactMessage.count", 1 do
+      post contact_messages_path(locale: :en), params: {
+        contact_message: {
+          name: "Editor",
+          email: "editor@example.com",
+          message: "I want to discuss sample pages."
+        }
+      }
+    end
+
+    assert_redirected_to contact_path(locale: :en)
+  end
+
+  test "contact rejects invalid message" do
+    post contact_messages_path(locale: :en), params: {
+      contact_message: {
+        name: "",
+        email: "invalid",
+        message: ""
+      }
+    }
+
+    assert_response :unprocessable_content
+    assert_select "li", minimum: 1
+  end
 end
