@@ -13,6 +13,10 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     get localized_root_path(locale: :en)
 
     assert_response :success
+    assert_select "title", text: "Gabriel SDL | Comic artist"
+    assert_select "meta[name='description'][content='Sequential art, sample pages, illustrations, covers, and commissions by Gabriel SDL.']", count: 1
+    assert_select "meta[property='og:title'][content='Gabriel SDL | Comic artist']", count: 1
+    assert_select "link[rel='alternate'][hreflang='pt']", count: 1
     assert_select "h1", text: /Sequential art/
     assert_select ".halftone-field"
     assert_select ".scratch-line"

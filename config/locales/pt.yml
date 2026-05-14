@@ -2,11 +2,14 @@ pt:
   site:
     brand: "gabrielsdl.com"
     title: "Gabriel SDL"
+    description: "Portfólio de quadrinhos de Gabriel SDL."
   navigation:
     portfolio: "Portfólio"
     about: "Sobre"
     contact: "Contato"
   home:
+    meta_title: "Gabriel SDL | Quadrinista"
+    meta_description: "Arte sequencial, sample pages, ilustrações, capas e commissions por Gabriel SDL."
     eyebrow: "Quadrinista"
     title: "Arte sequencial com impacto."
     intro: "Gabriel SDL é quadrinista e ilustrador, com foco em sample pages, narrativa visual, commissions e capas."
@@ -16,6 +19,8 @@ pt:
     latest: "Trabalhos recentes"
     view_all: "Ver tudo"
   portfolio:
+    meta_title: "Portfólio | Gabriel SDL"
+    meta_description: "Sample pages, arte sequencial, ilustrações, capas e commissions por Gabriel SDL."
     eyebrow: "Portfólio"
     title: "Páginas, ilustrações, capas e commissions."
     all: "Tudo"
@@ -27,6 +32,8 @@ pt:
     image_pending: "Imagem pendente"
     close: "Fechar"
   about:
+    meta_title: "Sobre | Gabriel SDL"
+    meta_description: "Sobre Gabriel SDL, quadrinista focado em narrativa visual e arte sequencial."
     eyebrow: "Sobre"
     title: "Gabriel SDL"
     body: "Sou Gabriel, artista de histórias em quadrinhos e ilustrador que achou no desenho e na arte sequencial um sonho, um ganha-pão e uma maneira de viver fazendo o que ama: dar vida às histórias."
@@ -39,6 +46,8 @@ pt:
     word_label: "Palavra"
     word: "Perseverança"
   contact:
+    meta_title: "Contato | Gabriel SDL"
+    meta_description: "Contato de Gabriel SDL para páginas sequenciais, commissions, capas e arte original."
     eyebrow: "Contato"
     title: "Conte o que você quer criar."
     body: "Disponível para arte original e tradicional, lápis, tinta nanquim, aquarela, marcadores e peças profissionais em A3 ou A4."

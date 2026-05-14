@@ -2,11 +2,14 @@ en:
   site:
     brand: "gabrielsdl.com"
     title: "Gabriel SDL"
+    description: "Comic book portfolio by Gabriel SDL."
   navigation:
     portfolio: "Portfolio"
     about: "About"
     contact: "Contact"
   home:
+    meta_title: "Gabriel SDL | Comic artist"
+    meta_description: "Sequential art, sample pages, illustrations, covers, and commissions by Gabriel SDL."
     eyebrow: "Comic artist"
     title: "Sequential art with impact."
     intro: "Gabriel SDL is a comic book artist focused on sample pages, visual storytelling, commissions, and covers."
@@ -16,6 +19,8 @@ en:
     latest: "Latest work"
     view_all: "View all"
   portfolio:
+    meta_title: "Portfolio | Gabriel SDL"
+    meta_description: "Sample pages, sequential art, illustrations, covers, and commissions by Gabriel SDL."
     eyebrow: "Portfolio"
     title: "Pages, illustrations, covers, and commissions."
     all: "All"
@@ -27,6 +32,8 @@ en:
     image_pending: "Image pending"
     close: "Close"
   about:
+    meta_title: "About | Gabriel SDL"
+    meta_description: "About Gabriel SDL, comic book artist focused on sequential storytelling."
     eyebrow: "About"
     title: "Gabriel SDL"
     body: "I am a comic book artist and illustrator who found in drawing and sequential art a dream, a craft, and a way to live doing what I love: bringing stories to life."
@@ -39,6 +46,8 @@ en:
     word_label: "Word"
     word: "Perseverance"
   contact:
+    meta_title: "Contact | Gabriel SDL"
+    meta_description: "Contact Gabriel SDL for sequential pages, commissions, covers, and original art."
     eyebrow: "Contact"
     title: "Tell me what you want to make."
     body: "Available for original and traditional art, pencils, ink, watercolor, markers, and professional A3 or A4 pieces."
