@@ -14,6 +14,7 @@ class Artwork < ApplicationRecord
 
   scope :publicly_visible, -> { where(visibility: "public") }
   scope :ordered, -> { order(:sort_order, :slug) }
+  scope :project_pages_first, -> { order(Arel.sql("project_id NULLS LAST"), :sort_order, :slug) }
 
   def title(locale = I18n.locale)
     translations.find { |translation| translation.locale == locale.to_s }&.title || slug.tr("-", " ").titleize

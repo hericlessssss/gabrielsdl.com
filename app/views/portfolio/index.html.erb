@@ -16,6 +16,6 @@
 <%= turbo_frame_tag "portfolio_artworks", class: "mt-10 block" do %>
   <section>
     <p class="mb-4 text-sm uppercase text-stone-500"><%= t("portfolio.count", count: @artworks.size) %></p>
-    <%= render "portfolio/artwork_grid", artworks: @artworks %>
+    <%= render "portfolio/artwork_groups", artwork_groups: @artwork_groups %>
   </section>
 <% end %>

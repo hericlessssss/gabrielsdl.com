@@ -25,6 +25,7 @@ pt:
     title: "Páginas, ilustrações, capas e commissions."
     all: "Tudo"
     filters: "Filtros do portfólio"
+    sequence: "Amostra sequencial"
     count:
       one: "1 trabalho"
       other: "%{count} trabalhos"

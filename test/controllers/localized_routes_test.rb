@@ -54,6 +54,13 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     end
     artwork = Artwork.create!(
       slug: "runika-page-1",
+      project: Project.create!(
+        slug: "runika",
+        portfolio_category: category,
+        visibility: "public",
+        status: "finished",
+        sort_order: 1
+      ).tap { |project| project.translations.create!(locale: "en", title: "Runika") },
       portfolio_category: category,
       visibility: "public",
       sort_order: 1
@@ -83,15 +90,17 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "p", text: "2 works"
     assert_select "[data-controller='lightbox']"
     assert_select "dialog [data-lightbox-target='title']"
-    assert_select "h2", text: "Runika page 1"
+    assert_select "h2", text: "Runika"
+    assert_select "h3", text: "Runika page 1"
 
     get portfolio_path(locale: :en, category: "sample-pages"), headers: { "Turbo-Frame" => "portfolio_artworks" }
 
     assert_response :success
     assert_select "turbo-frame#portfolio_artworks"
     assert_select "p", text: "1 work"
-    assert_select "h2", text: "Runika page 1"
-    assert_select "h2", text: "Venom 2025", count: 0
+    assert_select "h2", text: "Runika"
+    assert_select "h3", text: "Runika page 1"
+    assert_select "h3", text: "Venom 2025", count: 0
   end
 
   test "contact renders direct links and stores valid message" do

@@ -25,6 +25,7 @@ en:
     title: "Pages, illustrations, covers, and commissions."
     all: "All"
     filters: "Portfolio filters"
+    sequence: "Sequential sample"
     count:
       one: "1 work"
       other: "%{count} works"
