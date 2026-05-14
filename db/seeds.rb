@@ -82,15 +82,15 @@ projects.each do |data|
 end
 
 artworks = [
-  [ "runika-page-1", "runika", sample_pages, "insum/Paginas sequenciais_/runika/ARUNIKA_PAGINA1_GABRIELSLIMA.jpg", 10 ],
-  [ "runika-page-2", "runika", sample_pages, "insum/Paginas sequenciais_/runika/ARUNIKA_PAGINA2_GABRIELSLIMA.jpg", 11 ],
-  [ "runika-page-3", "runika", sample_pages, "insum/Paginas sequenciais_/runika/ARUNIKA_PAGINA3_GABRIELSLIMA.jpg", 12 ],
-  [ "the-punisher-page-1", "the-punisher", sample_pages, "insum/Paginas sequenciais_/the punisher (justiceiro)/THEPUNISHER_BIELSDL_PG1.jpg", 20 ],
-  [ "the-punisher-page-2", "the-punisher", sample_pages, "insum/Paginas sequenciais_/the punisher (justiceiro)/THEPUNISHER_BIELSDL_PG2.jpg", 21 ],
-  [ "the-punisher-page-3", "the-punisher", sample_pages, "insum/Paginas sequenciais_/the punisher (justiceiro)/THEPUNISHER_BIELSDL_PG3.jpg", 22 ],
-  [ "conan", nil, illustrations, "insum/ilustrações e comissions/CONAN JPG FINALIZADO.jpg", 100 ],
-  [ "venom-2025", nil, illustrations, "insum/ilustrações e comissions/VENOMGS2025PRINT.jpg", 101 ],
-  [ "vampirella", nil, illustrations, "insum/ilustrações e comissions/VAMPIRELA ART FINAL JPG.jpg", 102 ]
+  [ "runika-page-1", "runika", sample_pages, "app/assets/images/portfolio/runika-page-1.jpg", 10 ],
+  [ "runika-page-2", "runika", sample_pages, "app/assets/images/portfolio/runika-page-2.jpg", 11 ],
+  [ "runika-page-3", "runika", sample_pages, "app/assets/images/portfolio/runika-page-3.jpg", 12 ],
+  [ "the-punisher-page-1", "the-punisher", sample_pages, "app/assets/images/portfolio/the-punisher-page-1.jpg", 20 ],
+  [ "the-punisher-page-2", "the-punisher", sample_pages, "app/assets/images/portfolio/the-punisher-page-2.jpg", 21 ],
+  [ "the-punisher-page-3", "the-punisher", sample_pages, "app/assets/images/portfolio/the-punisher-page-3.jpg", 22 ],
+  [ "conan", nil, illustrations, "app/assets/images/portfolio/conan.jpg", 100 ],
+  [ "venom-2025", nil, illustrations, "app/assets/images/portfolio/venom-2025.jpg", 101 ],
+  [ "vampirella", nil, illustrations, "app/assets/images/portfolio/vampirella.jpg", 102 ]
 ]
 
 artworks.each do |slug, project_slug, category, relative_path, sort_order|

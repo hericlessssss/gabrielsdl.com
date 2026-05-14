@@ -175,10 +175,11 @@ Motivo: o briefing indica incerteza sobre quem vai atualizar e o site precisa sa
 Fluxo escolhido para o MVP:
 
 1. Conteudo novo entra em `db/seeds.rb`, fixtures ou task Rails dedicada.
-2. Imagens entram primeiro em `insum/` ou pasta de staging local.
-3. Active Storage anexa as imagens aos registros de `Artwork`.
-4. Variants do Active Storage geram tamanhos adequados para web.
-5. O site renderiza o conteudo com Rails Views/ERB, cache de fragmentos quando fizer sentido e Turbo para atualizacoes parciais.
+2. Imagens finais entram em `app/assets/images/portfolio`.
+3. `insum/` permanece apenas como fonte local ignorada pelo Git.
+4. Active Storage anexa as imagens versionadas aos registros de `Artwork`.
+5. Variants do Active Storage geram tamanhos adequados para web.
+6. O site renderiza o conteudo com Rails Views/ERB, cache de fragmentos quando fizer sentido e Turbo para atualizacoes parciais.
 
 Esse caminho permite atualizar via codigo agora e reaproveitar os mesmos models para um `/admin` no futuro, sem migracao conceitual.
 
@@ -336,6 +337,5 @@ Uma tarefa so termina quando:
 1. Refinar a direcao visual real da home e do portfolio.
 2. Criar lightbox com Stimulus.
 3. Melhorar filtros do portfolio com Turbo.
-4. Copiar assets finais para um fluxo versionavel ou anexar via seeds locais.
-5. Definir email publico e links finais.
-6. Validar visual em desktop/mobile.
+4. Definir email publico e links finais.
+5. Validar visual em desktop/mobile.
