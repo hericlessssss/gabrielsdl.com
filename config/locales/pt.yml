@@ -1,0 +1,37 @@
+pt:
+  site:
+    brand: "gabrielsdl.com"
+    title: "Gabriel SDL"
+  navigation:
+    portfolio: "Portfólio"
+    about: "Sobre"
+    contact: "Contato"
+  home:
+    eyebrow: "Quadrinista"
+    title: "Arte sequencial com impacto."
+    intro: "Gabriel SDL é quadrinista e ilustrador, com foco em sample pages, narrativa visual, commissions e capas."
+    cta_portfolio: "Ver portfólio"
+    cta_contact: "Contato"
+    focus: "Foco atual"
+    latest: "Trabalhos recentes"
+    view_all: "Ver tudo"
+  portfolio:
+    eyebrow: "Portfólio"
+    title: "Páginas, ilustrações, capas e commissions."
+    all: "Tudo"
+    empty: "Nenhuma arte pública cadastrada ainda."
+    image_pending: "Imagem pendente"
+  about:
+    eyebrow: "Sobre"
+    title: "Gabriel SDL"
+    body: "Sou Gabriel, artista de histórias em quadrinhos e ilustrador que achou no desenho e na arte sequencial um sonho, um ganha-pão e uma maneira de viver fazendo o que ama: dar vida às histórias."
+  contact:
+    eyebrow: "Contato"
+    title: "Conte o que você quer criar."
+    body: "Disponível para arte original e tradicional, lápis, tinta nanquim, aquarela, marcadores e peças profissionais em A3 ou A4."
+    name: "Nome"
+    email: "E-mail"
+    message: "Mensagem"
+    submit: "Enviar mensagem"
+    success: "Mensagem enviada. Gabriel responderá por e-mail."
+    errors: "Revise os campos e tente novamente."

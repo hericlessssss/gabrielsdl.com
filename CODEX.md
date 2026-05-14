@@ -253,6 +253,7 @@ Testes esperados no MVP:
 - `bin/rails test:system`
 - `bin/rails assets:precompile`
 - `bin/rails db:prepare`
+- `bin/rubocop`
 
 Cobertura minima:
 
@@ -272,11 +273,42 @@ Validacao visual:
 
 ## Como Rodar
 
-Ainda nao implementado. Sera preenchido apos scaffold inicial.
+O ambiente atual nao possui Ruby instalado no Windows. O fluxo validado usa Docker.
+
+1. Subir PostgreSQL:
+
+```powershell
+docker run -d --name gabrielsdl-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16-alpine
+```
+
+2. Abrir um container Ruby montando o projeto:
+
+```powershell
+$repo = (Get-Location).Path -replace '\\','/'
+docker run --rm -it -v "${repo}:/app" -v gabrielsdl-bundle:/usr/local/bundle -w /app -p 3000:3000 -e DATABASE_URL=postgres://postgres:postgres@host.docker.internal:55432/gabrielsdl_development ruby:3.3-bookworm bash
+```
+
+3. Dentro do container:
+
+```bash
+apt-get update
+apt-get install -y --no-install-recommends libpq-dev
+bundle install
+bin/rails db:prepare
+bin/rails db:seed
+bin/rails server -b 0.0.0.0
+```
 
 ## Como Rodar Testes
 
-Ainda nao implementado. Sera preenchido apos scaffold inicial.
+Com PostgreSQL rodando:
+
+```bash
+bin/rails db:prepare
+bin/rails test
+bin/rubocop
+bin/rails assets:precompile
+```
 
 ## Definition of Done
 
@@ -301,11 +333,9 @@ Uma tarefa so termina quando:
 
 ## Proximos Passos
 
-1. Criar app Rails com PostgreSQL, Tailwind, Hotwire e Minitest.
-2. Configurar I18n com portugues e ingles.
-3. Criar models, migrations, Active Storage e seeds iniciais a partir dos insumos.
-4. Criar tema visual base com tokens de cor, tipografia e layout.
-5. Implementar home, portfolio, lightbox, sobre e contato.
-6. Criar filtros com Turbo e interacoes leves com Stimulus.
-7. Validar formularios, rotas principais e seeds com testes.
-8. Validar visual em desktop/mobile.
+1. Refinar a direcao visual real da home e do portfolio.
+2. Criar lightbox com Stimulus.
+3. Melhorar filtros do portfolio com Turbo.
+4. Copiar assets finais para um fluxo versionavel ou anexar via seeds locais.
+5. Definir email publico e links finais.
+6. Validar visual em desktop/mobile.

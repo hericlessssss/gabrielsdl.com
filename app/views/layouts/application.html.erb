@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || t("site.title") %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gabrielsdl">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-neutral-950 text-stone-100 antialiased">
+    <header class="border-b border-stone-800/80">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
+        <%= link_to t("site.brand"), localized_root_path(locale: I18n.locale), class: "text-lg font-black uppercase tracking-wide" %>
+
+        <div class="flex items-center gap-4 text-sm text-stone-300">
+          <%= link_to t("navigation.portfolio"), portfolio_path(locale: I18n.locale), class: "hover:text-white" %>
+          <%= link_to t("navigation.about"), about_path(locale: I18n.locale), class: "hover:text-white" %>
+          <%= link_to t("navigation.contact"), contact_path(locale: I18n.locale), class: "hover:text-white" %>
+          <%= link_to "PT", url_for(locale: :pt), class: "hover:text-white" %>
+          <%= link_to "EN", url_for(locale: :en), class: "hover:text-white" %>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-5 py-12">
+      <% if notice.present? %>
+        <p class="mb-6 border border-emerald-500/40 bg-emerald-950/50 px-4 py-3 text-sm text-emerald-100"><%= notice %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

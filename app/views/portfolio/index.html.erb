@@ -1,0 +1,15 @@
+<section>
+  <p class="mb-4 text-sm font-bold uppercase text-orange-300"><%= t("portfolio.eyebrow") %></p>
+  <h1 class="text-4xl font-black uppercase text-white md:text-6xl"><%= t("portfolio.title") %></h1>
+
+  <nav class="mt-8 flex flex-wrap gap-3">
+    <%= link_to t("portfolio.all"), portfolio_path(locale: I18n.locale), class: "border px-4 py-2 text-sm font-bold uppercase #{'border-orange-300 text-orange-200' unless @current_category}" %>
+    <% @categories.each do |category| %>
+      <%= link_to category.name, portfolio_path(locale: I18n.locale, category: category.slug), class: "border px-4 py-2 text-sm font-bold uppercase #{'border-orange-300 text-orange-200' if @current_category == category}" %>
+    <% end %>
+  </nav>
+</section>
+
+<section class="mt-10">
+  <%= render "portfolio/artwork_grid", artworks: @artworks %>
+</section>

@@ -1,0 +1,37 @@
+en:
+  site:
+    brand: "gabrielsdl.com"
+    title: "Gabriel SDL"
+  navigation:
+    portfolio: "Portfolio"
+    about: "About"
+    contact: "Contact"
+  home:
+    eyebrow: "Comic artist"
+    title: "Sequential art with impact."
+    intro: "Gabriel SDL is a comic book artist focused on sample pages, visual storytelling, commissions, and covers."
+    cta_portfolio: "View portfolio"
+    cta_contact: "Contact"
+    focus: "Current focus"
+    latest: "Latest work"
+    view_all: "View all"
+  portfolio:
+    eyebrow: "Portfolio"
+    title: "Pages, illustrations, covers, and commissions."
+    all: "All"
+    empty: "No public artwork registered yet."
+    image_pending: "Image pending"
+  about:
+    eyebrow: "About"
+    title: "Gabriel SDL"
+    body: "I am a comic book artist and illustrator who found in drawing and sequential art a dream, a craft, and a way to live doing what I love: bringing stories to life."
+  contact:
+    eyebrow: "Contact"
+    title: "Tell me what you want to make."
+    body: "Available for original and traditional art, pencils, ink, watercolor, markers, and professional A3 or A4 pieces."
+    name: "Name"
+    email: "Email"
+    message: "Message"
+    submit: "Send message"
+    success: "Message sent. Gabriel will reply by email."
+    errors: "Review the fields and try again."

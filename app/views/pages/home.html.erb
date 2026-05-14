@@ -1,0 +1,29 @@
+<section class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+  <div>
+    <p class="mb-4 text-sm font-bold uppercase text-orange-300"><%= t("home.eyebrow") %></p>
+    <h1 class="max-w-4xl text-5xl font-black uppercase leading-none text-white md:text-7xl"><%= t("home.title") %></h1>
+    <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-300"><%= t("home.intro") %></p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <%= link_to t("home.cta_portfolio"), portfolio_path(locale: I18n.locale), class: "bg-orange-500 px-5 py-3 text-sm font-black uppercase text-neutral-950 hover:bg-orange-400" %>
+      <%= link_to t("home.cta_contact"), contact_path(locale: I18n.locale), class: "border border-stone-600 px-5 py-3 text-sm font-black uppercase text-stone-100 hover:border-stone-200" %>
+    </div>
+  </div>
+
+  <div class="border border-stone-800 bg-neutral-900 p-5">
+    <p class="text-sm uppercase text-stone-500"><%= t("home.focus") %></p>
+    <ul class="mt-4 space-y-3 text-2xl font-black uppercase text-white">
+      <li>Sample pages</li>
+      <li>Sequential art</li>
+      <li>Commissions</li>
+    </ul>
+  </div>
+</section>
+
+<section class="mt-16">
+  <div class="mb-6 flex items-end justify-between gap-4">
+    <h2 class="text-2xl font-black uppercase"><%= t("home.latest") %></h2>
+    <%= link_to t("home.view_all"), portfolio_path(locale: I18n.locale), class: "text-sm font-bold uppercase text-orange-300 hover:text-orange-200" %>
+  </div>
+
+  <%= render "portfolio/artwork_grid", artworks: @recent_artworks %>
+</section>

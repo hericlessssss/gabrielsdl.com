@@ -1,1 +1,37 @@
 insum/
+
+# Rails
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+!/tmp/pids
+!/tmp/pids/.keep
+
+# Active Storage local files
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Local credentials and deploy secrets
+/config/master.key
+/config/credentials/*.key
+/.kamal/secrets
+
+# Built assets
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets
+/node_modules/
+
+# Test and coverage output
+/coverage/
+/test/reports/
+
+# Local environment
+/.env*
+!/env.example
+/.bundle/
+.DS_Store
