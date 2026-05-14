@@ -19,6 +19,16 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "a.w-full", text: "View portfolio"
   end
 
+  test "about renders artist identity" do
+    get about_path(locale: :en)
+
+    assert_response :success
+    assert_select "img[alt='Illustrated avatar of Gabriel SDL holding a pencil.']"
+    assert_select "img[alt='Gabriel SDL signature mark.']"
+    assert_select "dd", text: "Sequential pages"
+    assert_select "dd", text: "Perseverance"
+  end
+
   test "portfolio renders with category filters" do
     assert_equal "/en/portfolio", portfolio_path(locale: :en)
 

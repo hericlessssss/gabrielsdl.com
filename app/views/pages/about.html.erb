@@ -1,5 +1,31 @@
-<section class="max-w-3xl">
-  <p class="mb-4 text-sm font-bold uppercase text-violet-300"><%= t("about.eyebrow") %></p>
-  <h1 class="text-4xl font-black uppercase text-white md:text-6xl"><%= t("about.title") %></h1>
-  <p class="mt-6 text-lg leading-8 text-stone-300"><%= t("about.body") %></p>
+<section class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+  <div class="halftone-field">
+    <figure class="ink-panel panel-frame max-w-sm p-3">
+      <%= image_tag "gabriel-avatar.jpg", alt: t("about.avatar_alt"), class: "aspect-square w-full object-cover" %>
+    </figure>
+  </div>
+
+  <div>
+    <p class="mb-4 text-sm font-bold uppercase text-violet-300"><%= t("about.eyebrow") %></p>
+    <h1 class="text-4xl font-black uppercase text-white md:text-6xl"><%= t("about.title") %></h1>
+    <div class="scratch-line mt-6"></div>
+    <p class="mt-6 text-lg leading-8 text-stone-300"><%= t("about.body") %></p>
+
+    <dl class="mt-8 grid gap-4 sm:grid-cols-3">
+      <div class="panel-frame p-4">
+        <dt class="text-xs font-black uppercase text-orange-300"><%= t("about.focus_label") %></dt>
+        <dd class="mt-2 text-sm text-stone-200"><%= t("about.focus") %></dd>
+      </div>
+      <div class="panel-frame p-4">
+        <dt class="text-xs font-black uppercase text-orange-300"><%= t("about.market_label") %></dt>
+        <dd class="mt-2 text-sm text-stone-200"><%= t("about.market") %></dd>
+      </div>
+      <div class="panel-frame p-4">
+        <dt class="text-xs font-black uppercase text-orange-300"><%= t("about.word_label") %></dt>
+        <dd class="mt-2 text-sm text-stone-200"><%= t("about.word") %></dd>
+      </div>
+    </dl>
+
+    <%= image_tag "gabriel-signature.jpg", alt: t("about.signature_alt"), class: "mt-8 h-24 w-24 border border-stone-800 object-cover" %>
+  </div>
 </section>
