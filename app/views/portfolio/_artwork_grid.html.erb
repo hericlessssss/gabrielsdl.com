@@ -1,11 +1,13 @@
 <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-controller="lightbox">
-  <% artworks.each do |artwork| %>
+  <% artworks.each_with_index do |artwork, index| %>
     <article class="panel-frame group transition hover:-translate-y-1 hover:border-orange-300/70">
       <% if artwork.image.attached? %>
         <button
           type="button"
           class="block w-full cursor-zoom-in text-left"
           data-action="lightbox#open"
+          data-lightbox-target="item"
+          data-lightbox-index="<%= index %>"
           data-lightbox-src="<%= url_for(artwork.image) %>"
           data-lightbox-alt="<%= artwork.alt_text %>"
           data-lightbox-title="<%= artwork.title %>"
@@ -41,5 +43,13 @@
       </button>
     </div>
     <img class="max-h-[80vh] w-full object-contain" alt="" data-lightbox-target="image">
+    <div class="mt-3 flex items-center justify-between gap-3">
+      <button type="button" class="border border-stone-700 px-3 py-2 text-xs font-black uppercase text-white hover:border-orange-300" data-action="lightbox#previous">
+        <%= t("portfolio.previous") %>
+      </button>
+      <button type="button" class="border border-stone-700 px-3 py-2 text-xs font-black uppercase text-white hover:border-orange-300" data-action="lightbox#next">
+        <%= t("portfolio.next") %>
+      </button>
+    </div>
   </figure>
 </dialog>

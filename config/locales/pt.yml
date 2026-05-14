@@ -32,6 +32,8 @@ pt:
     empty: "Nenhuma arte pública cadastrada ainda."
     image_pending: "Imagem pendente"
     close: "Fechar"
+    previous: "Anterior"
+    next: "Próxima"
   about:
     meta_title: "Sobre | Gabriel SDL"
     meta_description: "Sobre Gabriel SDL, quadrinista focado em narrativa visual e arte sequencial."

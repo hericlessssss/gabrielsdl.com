@@ -70,6 +70,11 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
       title: "Runika page 1",
       alt_text: "Runika sample page"
     )
+    artwork.image.attach(
+      io: Rails.root.join("app/assets/images/portfolio/runika-page-1.jpg").open,
+      filename: "runika-page-1.jpg",
+      content_type: "image/jpeg"
+    )
     Artwork.create!(
       slug: "venom-2025",
       portfolio_category: illustrations,
@@ -89,7 +94,11 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "turbo-frame#portfolio_artworks"
     assert_select "p", text: "2 works"
     assert_select "[data-controller='lightbox']"
+    assert_includes response.body, "data-lightbox-target=\"item\""
+    assert_includes response.body, "data-lightbox-index=\"0\""
     assert_select "dialog [data-lightbox-target='title']"
+    assert_select "dialog button", text: "Previous"
+    assert_select "dialog button", text: "Next"
     assert_select "h2", text: "Runika"
     assert_select "h3", text: "Runika page 1"
 

@@ -32,6 +32,8 @@ en:
     empty: "No public artwork registered yet."
     image_pending: "Image pending"
     close: "Close"
+    previous: "Previous"
+    next: "Next"
   about:
     meta_title: "About | Gabriel SDL"
     meta_description: "About Gabriel SDL, comic book artist focused on sequential storytelling."
