@@ -335,7 +335,6 @@ Uma tarefa so termina quando:
 ## Proximos Passos
 
 1. Refinar a direcao visual real da home e do portfolio.
-2. Criar lightbox com Stimulus.
-3. Melhorar filtros do portfolio com Turbo.
-4. Definir email publico e links finais.
-5. Validar visual em desktop/mobile.
+2. Definir email publico e links finais.
+3. Validar visual em desktop/mobile.
+4. Preparar deploy Rails.
