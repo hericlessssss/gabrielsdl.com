@@ -20,6 +20,15 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
       )
     end
 
+    6.times do |index|
+      Artwork.create!(
+        slug: "recent-work-#{index + 1}",
+        portfolio_category: category,
+        visibility: "public",
+        sort_order: index + 3
+      )
+    end
+
     get localized_root_path(locale: :en)
 
     assert_response :success
@@ -28,10 +37,13 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "meta[property='og:title'][content='Gabriel Santos | Comic artist']", count: 1
     assert_select "link[rel='alternate'][hreflang='pt']", count: 1
     assert_select "h1", text: /Sequential art/
+    assert_select "p", text: "Comic artist", count: 0
     assert_select ".halftone-field"
     assert_select ".scratch-line"
     assert_select ".home-feature-card", count: 3
+    assert_select "h3", count: 9
     assert_select "a.w-full", text: "View portfolio"
+    assert_select "section.mt-12 a", text: "View all"
   end
 
   test "about renders artist identity" do

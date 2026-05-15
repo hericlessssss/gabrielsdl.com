@@ -3,7 +3,6 @@
 
 <section class="halftone-field grid gap-10 border-b border-stone-800 pb-10 sm:pb-14 lg:min-h-[72vh] lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
   <div class="relative z-10">
-    <p class="mb-4 text-sm font-bold uppercase text-orange-300"><%= t("home.eyebrow") %></p>
     <h1 class="max-w-4xl text-4xl font-black uppercase leading-none text-white sm:text-5xl md:text-7xl"><%= t("home.title") %></h1>
     <div class="scratch-line mt-6"></div>
     <p class="mt-6 max-w-2xl text-base leading-7 text-stone-300 sm:text-lg sm:leading-8"><%= t("home.intro") %></p>
@@ -40,10 +39,13 @@
 </section>
 
 <section class="mt-12 sm:mt-16">
-  <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+  <div class="mb-6">
     <h2 class="text-2xl font-black uppercase"><%= t("home.latest") %></h2>
-    <%= link_to t("home.view_all"), portfolio_path(locale: I18n.locale), class: "text-sm font-bold uppercase text-orange-300 hover:text-orange-200" %>
   </div>
 
   <%= render "portfolio/artwork_grid", artworks: @recent_artworks %>
+
+  <div class="mt-8 flex justify-center">
+    <%= link_to t("home.view_all"), portfolio_path(locale: I18n.locale), class: "border border-orange-300 px-5 py-3 text-sm font-black uppercase text-orange-300 hover:bg-orange-300 hover:text-neutral-950" %>
+  </div>
 </section>

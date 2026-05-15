@@ -13,7 +13,7 @@
             data-lightbox-alt="<%= artwork.alt_text %>"
             data-lightbox-title="<%= artwork.title %>"
           >
-            <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "aspect-[3/4] w-full object-cover saturate-90 transition group-hover:saturate-100" %>
+            <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "aspect-[3/4] w-full object-cover transition group-hover:scale-[1.03]" %>
           </button>
         <% else %>
           <div class="grid aspect-[3/4] place-items-center bg-neutral-800 p-6 text-center text-sm uppercase text-stone-500">
