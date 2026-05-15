@@ -7,7 +7,7 @@ image: gabrielsdl
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 2.24.100.80
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -20,9 +20,10 @@ servers:
 #
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
 #
-# proxy:
-#   ssl: true
-#   host: app.example.com
+proxy:
+  ssl: true
+  host: gabrielsdl.com
+  app_port: 80
 
 # Where you keep your container images.
 registry:
@@ -40,6 +41,7 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - GABRIELSDL_DATABASE_PASSWORD
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
@@ -53,7 +55,8 @@ env:
 
     # Match this to any external database server to configure Active Record correctly
     # Use gabrielsdl-db for a db accessory server on same machine via local kamal docker network.
-    # DB_HOST: 192.168.0.2
+    DB_HOST: gabrielsdl-db
+    GABRIELSDL_DATABASE_USERNAME: gabrielsdl
 
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug
@@ -79,6 +82,9 @@ asset_path: /rails/public/assets
 # Configure the image builder.
 builder:
   arch: amd64
+  remote: ssh://deploy@2.24.100.80
+  local: false
+  context: "."
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
   # remote: ssh://docker@docker-builder-server
@@ -91,26 +97,26 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: deploy
+  keys:
+    - "~/.ssh/id_ed25519"
+  keys_only: true
+  config: false
 
 # Use accessory services (secrets come from .kamal/secrets).
-# accessories:
-#   db:
-#     image: mysql:8.0
-#     host: 192.168.0.2
-#     # Change to 3306 to expose port to the world instead of just local network.
-#     port: "127.0.0.1:3306:3306"
-#     env:
-#       clear:
-#         MYSQL_ROOT_HOST: '%'
-#       secret:
-#         - MYSQL_ROOT_PASSWORD
-#     files:
-#       - config/mysql/production.cnf:/etc/mysql/my.cnf
-#       - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
-#     directories:
-#       - data:/var/lib/mysql
+accessories:
+  db:
+    image: postgres:16-alpine
+    host: 2.24.100.80
+    env:
+      clear:
+        POSTGRES_USER: gabrielsdl
+        POSTGRES_DB: gabrielsdl_production
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
 #   redis:
 #     image: valkey/valkey:8
 #     host: 192.168.0.2

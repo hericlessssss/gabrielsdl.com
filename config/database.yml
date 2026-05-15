@@ -88,8 +88,9 @@ production:
   primary: &primary_production
     <<: *default
     database: gabrielsdl_production
-    username: gabrielsdl
+    username: <%= ENV.fetch("GABRIELSDL_DATABASE_USERNAME", "gabrielsdl") %>
     password: <%= ENV["GABRIELSDL_DATABASE_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
   cache:
     <<: *primary_production
     database: gabrielsdl_production_cache

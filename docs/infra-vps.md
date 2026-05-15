@@ -69,6 +69,8 @@ Conclusao: a opcao da Hostinger instalou Docker Engine e Docker Compose. Nao ha 
 
 Em 2026-05-14 foi removido o registro A antigo `2.57.91.91`.
 
+Durante o primeiro deploy, alguns resolvers ainda respondiam `2.57.91.91`. A aplicacao ja responde corretamente quando o dominio e resolvido para `2.24.100.80`.
+
 Validacao esperada:
 
 ```powershell
@@ -114,6 +116,71 @@ Motivo:
 - Docker ja esta instalado.
 - Mantem deploy simples e reproduzivel.
 - Permite usar proxy com SSL automatico.
+
+## Deploy Rails
+
+Ferramenta escolhida: Kamal.
+
+Arquitetura inicial:
+
+- `kamal-proxy` publica HTTP/HTTPS.
+- Rails roda em container Docker.
+- PostgreSQL roda como accessory Docker.
+- Active Storage usa volume local persistente.
+- Imagem Docker e construida na propria VPS via remote builder.
+
+Dominio principal:
+
+- `https://gabrielsdl.com`.
+
+Banco de producao:
+
+- Host interno: `gabrielsdl-db`.
+- Usuario: `gabrielsdl`.
+- Banco principal: `gabrielsdl_production`.
+- Bancos auxiliares Rails:
+  - `gabrielsdl_production_cache`.
+  - `gabrielsdl_production_queue`.
+  - `gabrielsdl_production_cable`.
+
+Volumes persistentes:
+
+- `gabrielsdl_storage:/rails/storage`.
+- Accessory PostgreSQL: `data:/var/lib/postgresql/data`.
+
+Primeiro deploy executado em 2026-05-15.
+
+Status apos deploy:
+
+- `kamal-proxy`: ativo em `80` e `443`.
+- `gabrielsdl-web`: ativo.
+- `gabrielsdl-db`: ativo.
+- HTTPS: ativo via Kamal Proxy/Let's Encrypt.
+- Validacao direta para a VPS: `https://gabrielsdl.com/pt` retorna Rails quando resolvido para `2.24.100.80`.
+
+Observacao operacional:
+
+O deploy foi executado a partir de um container Ruby local com Docker socket e rede host, porque o ambiente Windows local nao possui Ruby instalado.
+
+Validacao usada:
+
+```powershell
+curl.exe --resolve gabrielsdl.com:443:2.24.100.80 -I https://gabrielsdl.com/pt
+curl.exe --resolve gabrielsdl.com:80:2.24.100.80 -I http://gabrielsdl.com/pt
+```
+
+Comandos uteis:
+
+```powershell
+ssh -i $env:USERPROFILE\.ssh\gabrielsdl_vps_ed25519 deploy@2.24.100.80
+docker ps
+docker logs kamal-proxy --tail 100
+docker logs gabrielsdl-db --tail 100
+```
+
+Pendencia DNS:
+
+Confirmar que todos os resolvers retornam somente `2.24.100.80` para `gabrielsdl.com`.
 
 ## Seguranca
 
