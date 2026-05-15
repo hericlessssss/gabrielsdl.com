@@ -7,6 +7,7 @@ class ContactMessagesController < ApplicationController
     @contact_message = ContactMessage.new(contact_message_params.merge(locale: I18n.locale, source: "site"))
 
     if @contact_message.save
+      ContactMailer.new_message(@contact_message).deliver_later
       redirect_to contact_path(locale: I18n.locale), notice: t("contact.success")
     else
       render :new, status: :unprocessable_content

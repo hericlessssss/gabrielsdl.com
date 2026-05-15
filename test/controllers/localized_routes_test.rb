@@ -119,17 +119,19 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     get contact_path(locale: :en)
 
     assert_response :success
-    assert_select "a[href='mailto:contact@gabrielsdl.com']", text: "contact@gabrielsdl.com"
+    assert_select "a[href='mailto:bielsdldrawing@gmail.com']", text: "bielsdldrawing@gmail.com"
     assert_select "a[href='https://www.instagram.com/gskovu_/']", text: "@gskovu_"
 
     assert_difference "ContactMessage.count", 1 do
-      post contact_messages_path(locale: :en), params: {
-        contact_message: {
-          name: "Editor",
-          email: "editor@example.com",
-          message: "I want to discuss sample pages."
+      assert_enqueued_emails 1 do
+        post contact_messages_path(locale: :en), params: {
+          contact_message: {
+            name: "Editor",
+            email: "editor@example.com",
+            message: "I want to discuss sample pages."
+          }
         }
-      }
+      end
     end
 
     assert_redirected_to contact_path(locale: :en)

@@ -42,6 +42,8 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - GABRIELSDL_DATABASE_PASSWORD
+    - SMTP_USERNAME
+    - SMTP_PASSWORD
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
@@ -57,6 +59,11 @@ env:
     # Use gabrielsdl-db for a db accessory server on same machine via local kamal docker network.
     DB_HOST: gabrielsdl-db
     GABRIELSDL_DATABASE_USERNAME: gabrielsdl
+    SMTP_ADDRESS: smtp.gmail.com
+    SMTP_PORT: 587
+    SMTP_DOMAIN: gmail.com
+    CONTACT_FROM_EMAIL: bielsdldrawing@gmail.com
+    CONTACT_TO_EMAIL: bielsdldrawing@gmail.com
 
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug

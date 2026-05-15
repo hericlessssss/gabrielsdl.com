@@ -221,6 +221,7 @@ Uso no MVP:
 
 - PostgreSQL para conteudo do portfolio e mensagens de contato.
 - Active Storage para imagens originais e variants otimizadas.
+- Action Mailer via Gmail SMTP para notificar novas mensagens do formulario.
 - Controllers Rails convencionais para home, portfolio, sobre e contato.
 - Validacoes ActiveRecord para formularios e conteudo.
 - Escopos de visibilidade para publicar apenas conteudo marcado como publico.
@@ -264,6 +265,7 @@ Cobertura minima:
 - Renderizacao das rotas principais.
 - Abertura/fechamento do lightbox.
 - Validacao do formulario de contato.
+- Enfileiramento de email ao salvar mensagem valida.
 
 Validacao visual:
 
@@ -318,7 +320,7 @@ Uma tarefa so termina quando:
 
 ## Pendencias Conhecidas
 
-- Confirmar email publico de contato.
+- Email publico e SMTP inicial: `bielsdldrawing@gmail.com`.
 - Confirmar URL final do Instagram e demais redes.
 - Confirmar dominio e conta de hospedagem.
 - Rotacionar senha root da VPS antes do deploy publico.
@@ -330,6 +332,6 @@ Uma tarefa so termina quando:
 ## Proximos Passos
 
 1. Refinar a direcao visual real da home e do portfolio.
-2. Definir email publico e links finais.
+2. Configurar senha de app do Gmail para envio SMTP.
 3. Validar visual em desktop/mobile.
 4. Preparar deploy Rails.

@@ -208,6 +208,8 @@ Secrets necessarios no GitHub:
 - `RAILS_MASTER_KEY`: conteudo de `config/master.key`.
 - `GABRIELSDL_DATABASE_PASSWORD`: mesma senha usada em `.kamal/secrets`.
 - `KAMAL_SSH_PRIVATE_KEY`: conteudo da chave privada local `C:\Users\myPC\.ssh\gabrielsdl_vps_ed25519`.
+- `SMTP_USERNAME`: conta Gmail usada para envio, hoje `bielsdldrawing@gmail.com`.
+- `SMTP_PASSWORD`: senha de app gerada no Google Account, sem espacos.
 
 Atencao:
 
@@ -216,6 +218,34 @@ Atencao:
 - Migrations rodam pelo entrypoint Docker no boot do container Rails.
 - Active Storage persiste em `gabrielsdl_storage:/rails/storage`.
 - Banco persiste em `~/gabrielsdl-db/data` no host da VPS.
+
+## Email Transacional
+
+O formulario de contato salva a mensagem no banco e enfileira um email via Action Mailer.
+
+Provedor SMTP inicial:
+
+- Servidor: `smtp.gmail.com`.
+- Porta: `587`.
+- Criptografia: STARTTLS.
+- Usuario: `bielsdldrawing@gmail.com`.
+- Destinatario das mensagens: `bielsdldrawing@gmail.com`.
+
+Variaveis usadas pelo container Rails:
+
+- `SMTP_ADDRESS=smtp.gmail.com`.
+- `SMTP_PORT=587`.
+- `SMTP_DOMAIN=gmail.com`.
+- `SMTP_USERNAME`.
+- `SMTP_PASSWORD`.
+- `CONTACT_FROM_EMAIL=bielsdldrawing@gmail.com`.
+- `CONTACT_TO_EMAIL=bielsdldrawing@gmail.com`.
+
+Pendencia operacional:
+
+- Gerar senha de app no Gmail.
+- Salvar `SMTP_USERNAME` e `SMTP_PASSWORD` nos GitHub Actions secrets.
+- Reexecutar deploy via push na `main`.
 
 ## Seguranca
 
