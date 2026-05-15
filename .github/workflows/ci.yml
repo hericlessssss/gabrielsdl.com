@@ -90,7 +90,7 @@ jobs:
 
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libpq-dev libvips
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y chromium-browser libpq-dev libvips
 
       - name: Checkout code
         uses: actions/checkout@v6
@@ -104,7 +104,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
-        run: bin/rails db:prepare test
+        run: bin/rails db:drop db:create db:schema:load test
 
   system_test:
     runs-on: ubuntu-latest
@@ -139,9 +139,10 @@ jobs:
 
       - name: Run System Tests
         env:
+          CHROME_BIN: /usr/bin/chromium-browser
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
-        run: bin/rails db:prepare test:system
+        run: bin/rails db:drop db:create db:schema:load test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

@@ -8,6 +8,6 @@ module MetaTagsHelper
   end
 
   def alternate_locale_url(locale)
-    url_for(params.permit!.to_h.merge(locale: locale, only_path: false))
+    url_for(request.path_parameters.merge(request.query_parameters).merge(locale: locale, only_path: false))
   end
 end
