@@ -32,7 +32,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="site-shell text-stone-100 antialiased">
+  <body class="site-shell flex min-h-screen flex-col text-stone-100 antialiased">
     <header class="sticky top-0 z-40 border-b border-stone-800/80 bg-neutral-950/85 backdrop-blur">
       <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-5">
         <%= link_to t("site.brand"), localized_root_path(locale: I18n.locale), class: "min-w-0 text-base font-black uppercase tracking-wide sm:text-lg" %>
@@ -55,12 +55,18 @@
       </nav>
     </header>
 
-    <main class="mx-auto max-w-6xl px-4 py-8 sm:px-5 sm:py-12">
+    <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-5 sm:py-12">
       <% if notice.present? %>
         <p class="mb-6 border border-emerald-500/40 bg-emerald-950/50 px-4 py-3 text-sm text-emerald-100"><%= notice %></p>
       <% end %>
 
       <%= yield %>
     </main>
+
+    <footer class="site-footer mt-8 border-t border-stone-800/80 px-4 py-5 sm:px-5">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-center text-[0.5rem] font-black uppercase text-stone-400 sm:text-xs">
+        <p class="whitespace-nowrap">gabrielsdl © 2026. Todos os direitos reservados. · by Acutia</p>
+      </div>
+    </footer>
   </body>
 </html>

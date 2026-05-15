@@ -91,6 +91,23 @@
     background: rgba(23, 23, 23, 0.82);
   }
 
+  .site-footer {
+    background:
+      linear-gradient(90deg, rgba(249, 115, 22, 0.08), transparent 28%, rgba(139, 92, 246, 0.08)),
+      rgba(5, 5, 5, 0.72);
+  }
+
+  .site-footer p {
+    transition:
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .site-footer p:hover {
+    color: rgb(245, 245, 244);
+    transform: translateY(-0.08rem);
+  }
+
   .nav-link {
     align-items: center;
     border: 1px solid transparent;
