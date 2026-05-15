@@ -99,6 +99,55 @@
     color: rgb(10, 10, 10);
   }
 
+  .comic-button {
+    align-items: center;
+    background: transparent;
+    border: 1px solid rgba(214, 211, 209, 0.7);
+    color: rgb(245, 245, 244);
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 900;
+    justify-content: center;
+    letter-spacing: 0;
+    line-height: 1;
+    padding: 0.78rem 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .comic-button:hover,
+  .comic-button:focus-visible {
+    border-color: rgba(253, 186, 116, 0.85);
+    box-shadow: 5px 5px 0 rgba(249, 115, 22, 0.78);
+    color: white;
+    transform: translateY(-0.16rem);
+  }
+
+  .comic-button-primary,
+  .comic-button-active,
+  .comic-button-active:hover,
+  .comic-button-active:focus-visible {
+    background: rgb(249, 115, 22);
+    border-color: rgb(253, 186, 116);
+    box-shadow: 5px 5px 0 rgba(139, 92, 246, 0.8);
+    color: rgb(10, 10, 10);
+  }
+
+  .comic-button-primary:hover,
+  .comic-button-primary:focus-visible {
+    background: rgb(251, 146, 60);
+    border-color: rgb(253, 186, 116);
+    box-shadow: 5px 5px 0 rgba(139, 92, 246, 0.8);
+    color: rgb(10, 10, 10);
+    transform: translateY(-0.16rem);
+  }
+
   .locale-link {
     align-items: center;
     color: rgb(168, 162, 158);

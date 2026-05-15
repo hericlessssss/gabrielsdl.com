@@ -7,8 +7,8 @@
     <div class="scratch-line mt-6"></div>
     <p class="mt-6 max-w-2xl text-base leading-7 text-stone-300 sm:text-lg sm:leading-8"><%= t("home.intro") %></p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <%= link_to t("home.cta_portfolio"), portfolio_path(locale: I18n.locale), class: "w-full bg-orange-500 px-5 py-3 text-center text-sm font-black uppercase text-neutral-950 hover:bg-orange-400 sm:w-auto" %>
-      <%= link_to t("home.cta_contact"), contact_path(locale: I18n.locale), class: "w-full border border-stone-600 px-5 py-3 text-center text-sm font-black uppercase text-stone-100 hover:border-stone-200 sm:w-auto" %>
+      <%= link_to t("home.cta_portfolio"), portfolio_path(locale: I18n.locale), class: comic_button_class(variant: :primary, extra: "w-full text-sm sm:w-auto") %>
+      <%= link_to t("home.cta_contact"), contact_path(locale: I18n.locale), class: comic_button_class(extra: "w-full text-sm sm:w-auto") %>
     </div>
   </div>
 
@@ -46,6 +46,6 @@
   <%= render "portfolio/artwork_grid", artworks: @recent_artworks %>
 
   <div class="mt-8 flex justify-center">
-    <%= link_to t("home.view_all"), portfolio_path(locale: I18n.locale), class: "border border-orange-300 px-5 py-3 text-sm font-black uppercase text-orange-300 hover:bg-orange-300 hover:text-neutral-950" %>
+    <%= link_to t("home.view_all"), portfolio_path(locale: I18n.locale), class: comic_button_class(extra: "text-sm") %>
   </div>
 </section>

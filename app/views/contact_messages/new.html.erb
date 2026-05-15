@@ -41,6 +41,6 @@
       <%= form.text_area :message, rows: 7, class: "w-full border border-stone-700 bg-neutral-900 px-4 py-3 text-white" %>
     </div>
 
-    <%= form.submit t("contact.submit"), class: "w-full bg-orange-500 px-5 py-3 text-sm font-black uppercase text-neutral-950 hover:bg-orange-400 sm:w-auto" %>
+    <%= form.submit t("contact.submit"), class: comic_button_class(variant: :primary, extra: "w-full text-sm sm:w-auto") %>
   <% end %>
 </section>

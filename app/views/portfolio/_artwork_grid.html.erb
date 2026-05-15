@@ -39,16 +39,16 @@
     <figure class="border border-stone-700 bg-neutral-950 p-3">
       <div class="mb-3 flex items-center justify-between gap-4">
         <figcaption class="text-sm font-black uppercase text-white" data-lightbox-target="title"></figcaption>
-        <button type="button" class="border border-stone-700 px-3 py-2 text-xs font-black uppercase text-white hover:border-orange-300" data-action="lightbox#close">
+        <button type="button" class="<%= comic_button_class(extra: "text-xs") %>" data-action="lightbox#close">
           <%= t("portfolio.close") %>
         </button>
       </div>
       <img class="max-h-[80vh] w-full object-contain" alt="" data-lightbox-target="image">
       <div class="mt-3 flex items-center justify-between gap-3">
-        <button type="button" class="border border-stone-700 px-3 py-2 text-xs font-black uppercase text-white hover:border-orange-300" data-action="lightbox#previous">
+        <button type="button" class="<%= comic_button_class(extra: "text-xs") %>" data-action="lightbox#previous">
           <%= t("portfolio.previous") %>
         </button>
-        <button type="button" class="border border-stone-700 px-3 py-2 text-xs font-black uppercase text-white hover:border-orange-300" data-action="lightbox#next">
+        <button type="button" class="<%= comic_button_class(extra: "text-xs") %>" data-action="lightbox#next">
           <%= t("portfolio.next") %>
         </button>
       </div>

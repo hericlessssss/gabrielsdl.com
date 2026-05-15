@@ -7,9 +7,9 @@
     <h1 class="text-4xl font-black uppercase text-white md:text-6xl"><%= t("portfolio.title") %></h1>
 
     <nav class="mt-8 flex flex-wrap gap-3" aria-label="<%= t("portfolio.filters") %>">
-      <%= link_to t("portfolio.all"), portfolio_path(locale: I18n.locale), data: { turbo_frame: "portfolio_content" }, aria: { current: ("page" unless @current_category) }, class: "border px-4 py-2 text-sm font-bold uppercase #{'border-orange-300 bg-orange-300 text-neutral-950' unless @current_category}" %>
+      <%= link_to t("portfolio.all"), portfolio_path(locale: I18n.locale), data: { turbo_frame: "portfolio_content" }, aria: { current: ("page" unless @current_category) }, class: comic_button_class(active: @current_category.blank?, extra: "text-sm") %>
       <% @categories.each do |category| %>
-        <%= link_to category.name, portfolio_path(locale: I18n.locale, category: category.slug), data: { turbo_frame: "portfolio_content" }, aria: { current: ("page" if @current_category == category) }, class: "border px-4 py-2 text-sm font-bold uppercase #{'border-orange-300 bg-orange-300 text-neutral-950' if @current_category == category}" %>
+        <%= link_to category.name, portfolio_path(locale: I18n.locale, category: category.slug), data: { turbo_frame: "portfolio_content" }, aria: { current: ("page" if @current_category == category) }, class: comic_button_class(active: @current_category == category, extra: "text-sm") %>
       <% end %>
     </nav>
   </section>
