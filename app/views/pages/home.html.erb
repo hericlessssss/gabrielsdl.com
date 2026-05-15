@@ -13,13 +13,13 @@
     </div>
   </div>
 
-  <div class="relative z-10 grid grid-cols-2 gap-3 pb-6 sm:grid-cols-3 sm:pb-8">
-    <% @recent_artworks.first(3).each do |artwork| %>
-      <figure class="panel-frame ink-panel min-h-56 p-2 sm:min-h-72 lg:min-h-80">
+  <div class="relative z-10 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-8 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-3 sm:overflow-visible sm:px-0">
+    <% @hero_artworks.each do |artwork| %>
+      <figure class="home-feature-card panel-frame ink-panel min-h-72 w-[76vw] shrink-0 snap-center p-2 sm:min-h-72 sm:w-auto lg:min-h-80">
         <% if artwork.image.attached? %>
-          <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "h-full min-h-56 w-full object-cover grayscale sm:min-h-72 lg:min-h-80" %>
+          <%= image_tag artwork.image.variant(:thumb), alt: artwork.alt_text, class: "home-feature-image h-full min-h-72 w-full object-cover sm:min-h-72 lg:min-h-80" %>
         <% else %>
-          <div class="grid h-full min-h-56 place-items-center bg-neutral-900 p-4 text-center text-xs font-black uppercase text-stone-500 sm:min-h-72 lg:min-h-80">
+          <div class="grid h-full min-h-72 place-items-center bg-neutral-900 p-4 text-center text-xs font-black uppercase text-stone-500 sm:min-h-72 lg:min-h-80">
             <%= artwork.title %>
           </div>
         <% end %>

@@ -9,6 +9,16 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
 
   test "localized home renders" do
     assert_equal "/en", localized_root_path(locale: :en)
+    category = PortfolioCategory.create!(slug: "illustrations", sort_order: 1)
+
+    [ "venom-2025", "invencivel", "the-punisher-page-1" ].each_with_index do |slug, index|
+      Artwork.create!(
+        slug: slug,
+        portfolio_category: category,
+        visibility: "public",
+        sort_order: index
+      )
+    end
 
     get localized_root_path(locale: :en)
 
@@ -20,6 +30,7 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_select "h1", text: /Sequential art/
     assert_select ".halftone-field"
     assert_select ".scratch-line"
+    assert_select ".home-feature-card", count: 3
     assert_select "a.w-full", text: "View portfolio"
   end
 
