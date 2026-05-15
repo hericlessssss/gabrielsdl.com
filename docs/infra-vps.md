@@ -182,6 +182,41 @@ Pendencia DNS:
 
 Confirmar que todos os resolvers retornam somente `2.24.100.80` para `gabrielsdl.com`.
 
+## CI/CD
+
+GitHub Actions executa a pipeline em pull requests e pushes para `main`.
+
+Jobs obrigatorios antes do deploy:
+
+1. `scan_ruby`: Brakeman e Bundler Audit.
+2. `scan_js`: Importmap audit.
+3. `lint`: RuboCop.
+4. `test`: testes Rails.
+5. `system_test`: testes system/headless browser.
+6. `assets`: precompile de assets.
+
+Deploy automatico:
+
+- Executa apenas em `push` para `main`.
+- Depende de todos os jobs anteriores.
+- Usa Kamal para publicar na VPS.
+- Inicia registry Docker local no runner antes do deploy.
+- Nao executa em pull requests.
+
+Secrets necessarios no GitHub:
+
+- `RAILS_MASTER_KEY`: conteudo de `config/master.key`.
+- `GABRIELSDL_DATABASE_PASSWORD`: mesma senha usada em `.kamal/secrets`.
+- `KAMAL_SSH_PRIVATE_KEY`: conteudo da chave privada local `C:\Users\myPC\.ssh\gabrielsdl_vps_ed25519`.
+
+Atencao:
+
+- Nao commitar `.kamal/secrets`.
+- Nao commitar `config/master.key`.
+- Migrations rodam pelo entrypoint Docker no boot do container Rails.
+- Active Storage persiste em `gabrielsdl_storage:/rails/storage`.
+- Banco persiste em `~/gabrielsdl-db/data` no host da VPS.
+
 ## Seguranca
 
 Nao registrar senhas neste repositorio.
