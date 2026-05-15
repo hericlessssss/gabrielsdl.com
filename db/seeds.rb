@@ -88,9 +88,22 @@ artworks = [
   [ "the-punisher-page-1", "the-punisher", sample_pages, "app/assets/images/portfolio/the-punisher-page-1.jpg", 20 ],
   [ "the-punisher-page-2", "the-punisher", sample_pages, "app/assets/images/portfolio/the-punisher-page-2.jpg", 21 ],
   [ "the-punisher-page-3", "the-punisher", sample_pages, "app/assets/images/portfolio/the-punisher-page-3.jpg", 22 ],
+  [ "bicho-papao-page-1", "a-verdadeira-historia-do-bicho-papao", sample_pages, "app/assets/images/portfolio/bicho-papao-page-1.jpg", 30 ],
+  [ "bicho-papao-page-2", "a-verdadeira-historia-do-bicho-papao", sample_pages, "app/assets/images/portfolio/bicho-papao-page-2.jpg", 31 ],
+  [ "bicho-papao-page-3", "a-verdadeira-historia-do-bicho-papao", sample_pages, "app/assets/images/portfolio/bicho-papao-page-3.jpg", 32 ],
   [ "conan", nil, illustrations, "app/assets/images/portfolio/conan.jpg", 100 ],
-  [ "venom-2025", nil, illustrations, "app/assets/images/portfolio/venom-2025.jpg", 101 ],
-  [ "vampirella", nil, illustrations, "app/assets/images/portfolio/vampirella.jpg", 102 ]
+  [ "eric", nil, illustrations, "app/assets/images/portfolio/eric.jpg", 101 ],
+  [ "illyana", nil, illustrations, "app/assets/images/portfolio/illyana.jpg", 102 ],
+  [ "invencivel", nil, illustrations, "app/assets/images/portfolio/invencivel.jpg", 103 ],
+  [ "jubileu", nil, illustrations, "app/assets/images/portfolio/jubileu.jpg", 104 ],
+  [ "noturno", nil, illustrations, "app/assets/images/portfolio/noturno.jpg", 105 ],
+  [ "print-1-dc-1", nil, illustrations, "app/assets/images/portfolio/print-1-dc-1.jpg", 106 ],
+  [ "psylocke", nil, illustrations, "app/assets/images/portfolio/psylocke.jpg", 107 ],
+  [ "spider-art", nil, illustrations, "app/assets/images/portfolio/spider-art.jpg", 108 ],
+  [ "spiderpunk", nil, illustrations, "app/assets/images/portfolio/spiderpunk.jpg", 109 ],
+  [ "storm", nil, illustrations, "app/assets/images/portfolio/storm.jpg", 110 ],
+  [ "vampirella", nil, illustrations, "app/assets/images/portfolio/vampirella.jpg", 111 ],
+  [ "venom-2025", nil, illustrations, "app/assets/images/portfolio/venom-2025.jpg", 112 ]
 ]
 
 artworks.each do |slug, project_slug, category, relative_path, sort_order|
@@ -129,3 +142,4 @@ end
 
 Project.find_by!(slug: "runika").update!(cover_artwork: Artwork.find_by(slug: "runika-page-1"))
 Project.find_by!(slug: "the-punisher").update!(cover_artwork: Artwork.find_by(slug: "the-punisher-page-1"))
+Project.find_by!(slug: "a-verdadeira-historia-do-bicho-papao").update!(cover_artwork: Artwork.find_by(slug: "bicho-papao-page-1"))

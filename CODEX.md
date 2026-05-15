@@ -39,6 +39,7 @@ Projetos/sample pages prioritarios para primeira leitura do artista:
 
 - `runika`
 - `the punisher (justiceiro)`
+- `a-verdadeira-historia-do-bicho-papao`
 
 Referencias informadas pelo cliente:
 
@@ -325,7 +326,6 @@ Uma tarefa so termina quando:
 - Confirmar dominio e conta de hospedagem.
 - Rotacionar senha root da VPS antes do deploy publico.
 - Definir traducoes finais em ingles.
-- Definir quais ilustracoes entram no primeiro lancamento.
 - Otimizar imagens grandes antes de qualquer deploy.
 - Levantar capa/referencia visual exata de Hailstone para orientar a primeira proposta visual.
 
