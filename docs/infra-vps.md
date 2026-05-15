@@ -217,6 +217,7 @@ Atencao:
 - Nao commitar `.kamal/secrets`.
 - Nao commitar `config/master.key`.
 - Migrations rodam pelo entrypoint Docker no boot do container Rails.
+- Seeds rodam pelo entrypoint Docker no boot para sincronizar conteudo versionado do portfolio.
 - Active Storage persiste em `gabrielsdl_storage:/rails/storage`.
 - Banco persiste em `~/gabrielsdl-db/data` no host da VPS.
 
