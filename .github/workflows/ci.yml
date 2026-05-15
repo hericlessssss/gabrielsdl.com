@@ -198,6 +198,23 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           printf '%s\n' '2.24.100.80 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID7Prdyzpjaowz6/L12gOzW+MK3OSnrJjisxTB4zdnxr' > ~/.ssh/known_hosts
 
+      - name: Write Kamal secrets
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          GABRIELSDL_DATABASE_PASSWORD: ${{ secrets.GABRIELSDL_DATABASE_PASSWORD }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          install -m 700 -d .kamal
+          {
+            printf 'RAILS_MASTER_KEY=%s\n' "$RAILS_MASTER_KEY"
+            printf 'GABRIELSDL_DATABASE_PASSWORD=%s\n' "$GABRIELSDL_DATABASE_PASSWORD"
+            printf 'POSTGRES_PASSWORD=%s\n' "$GABRIELSDL_DATABASE_PASSWORD"
+            printf 'SMTP_USERNAME=%s\n' "$SMTP_USERNAME"
+            printf 'SMTP_PASSWORD=%s\n' "$SMTP_PASSWORD"
+          } > .kamal/secrets
+          chmod 600 .kamal/secrets
+
       - name: Start local image registry
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}

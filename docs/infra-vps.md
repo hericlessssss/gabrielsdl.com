@@ -201,6 +201,7 @@ Deploy automatico:
 - Depende de todos os jobs anteriores.
 - Usa Kamal para publicar na VPS.
 - Inicia registry Docker local no runner antes do deploy.
+- Gera `.kamal/secrets` temporario no runner usando GitHub Actions secrets.
 - Nao executa em pull requests.
 
 Secrets necessarios no GitHub:
