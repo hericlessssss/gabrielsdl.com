@@ -118,8 +118,8 @@ artworks.each do |slug, project_slug, category, relative_path, sort_order|
 
   title = slug.humanize
   {
-    pt: "#{title} por Gabriel SDL",
-    en: "#{title} by Gabriel SDL"
+    pt: "#{title} por Gabriel Santos",
+    en: "#{title} by Gabriel Santos"
   }.each do |locale, localized_title|
     upsert_translation(
       artwork,

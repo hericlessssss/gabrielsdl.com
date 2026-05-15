@@ -13,9 +13,9 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     get localized_root_path(locale: :en)
 
     assert_response :success
-    assert_select "title", text: "Gabriel SDL | Comic artist"
-    assert_select "meta[name='description'][content='Sequential art, sample pages, illustrations, covers, and commissions by Gabriel SDL.']", count: 1
-    assert_select "meta[property='og:title'][content='Gabriel SDL | Comic artist']", count: 1
+    assert_select "title", text: "Gabriel Santos | Comic artist"
+    assert_select "meta[name='description'][content='Sequential art, sample pages, illustrations, covers, and commissions by Gabriel Santos.']", count: 1
+    assert_select "meta[property='og:title'][content='Gabriel Santos | Comic artist']", count: 1
     assert_select "link[rel='alternate'][hreflang='pt']", count: 1
     assert_select "h1", text: /Sequential art/
     assert_select ".halftone-field"
@@ -27,8 +27,8 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     get about_path(locale: :en)
 
     assert_response :success
-    assert_select "img[alt='Illustrated avatar of Gabriel SDL holding a pencil.']"
-    assert_select "img[alt='Gabriel SDL signature mark.']"
+    assert_select "img[alt='Illustrated avatar of Gabriel Santos holding a pencil.']"
+    assert_select "img[alt='Gabriel Santos signature mark.']"
     assert_select "dd", text: "Sequential pages"
     assert_select "dd", text: "Perseverance"
   end
