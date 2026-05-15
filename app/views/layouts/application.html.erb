@@ -42,8 +42,14 @@
           <%= navigation_link t("navigation.about"), about_path(locale: I18n.locale), active: controller_name == "pages" && action_name == "about" %>
           <%= navigation_link t("navigation.contact"), contact_path(locale: I18n.locale), active: controller_name == "contact_messages" %>
           <span class="ml-1 flex items-center gap-2">
-            <%= link_to "PT", url_for(locale: :pt), class: "locale-link" %>
-            <%= link_to "EN", url_for(locale: :en), class: "locale-link" %>
+            <%= link_to url_for(locale: :pt), class: "locale-link", aria: { label: "Português" } do %>
+              <span class="flag-icon flag-br" aria-hidden="true"></span>
+              <span>PT</span>
+            <% end %>
+            <%= link_to url_for(locale: :en), class: "locale-link", aria: { label: "English" } do %>
+              <span class="flag-icon flag-us" aria-hidden="true"></span>
+              <span>EN</span>
+            <% end %>
           </span>
         </div>
       </nav>
