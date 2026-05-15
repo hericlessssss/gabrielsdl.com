@@ -52,8 +52,13 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "img[alt='Illustrated avatar of Gabriel Santos holding a pencil.']"
     assert_select "img[alt='Gabriel Santos signature mark.']"
+    assert_select ".floating-stat", count: 2
+    assert_select "dt", text: "Focus"
+    assert_select "dt", text: "Market"
     assert_select "dd", text: "Sequential pages"
-    assert_select "dd", text: "Perseverance"
+    assert_select "dd", text: "Comics and commissions"
+    assert_select "dt", text: "Word", count: 0
+    assert_select "dd", text: "Perseverance", count: 0
   end
 
   test "portuguese copy is readable" do
@@ -62,7 +67,8 @@ class LocalizedRoutesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_includes response.body, "histórias em quadrinhos"
     assert_includes response.body, "lápis"
-    assert_includes response.body, "Perseverança"
+    assert_includes response.body, "Quadrinhos e commissions"
+    assert_not_includes response.body, "Perseveran"
     assert_no_match(/Ã|Â|�/, response.body)
   end
 
