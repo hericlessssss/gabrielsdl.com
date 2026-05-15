@@ -41,7 +41,7 @@
           <%= navigation_link t("navigation.portfolio"), portfolio_path(locale: I18n.locale), active: controller_name == "portfolio" %>
           <%= navigation_link t("navigation.about"), about_path(locale: I18n.locale), active: controller_name == "pages" && action_name == "about" %>
           <%= navigation_link t("navigation.contact"), contact_path(locale: I18n.locale), active: controller_name == "contact_messages" %>
-          <span class="ml-1 flex items-center gap-2">
+          <span class="ml-1 flex items-center gap-1">
             <%= link_to url_for(locale: :pt), class: "locale-link", aria: { label: "Português" } do %>
               <span class="flag-icon flag-br" aria-hidden="true"></span>
               <span>PT</span>
