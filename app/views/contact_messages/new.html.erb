@@ -9,12 +9,18 @@
     <p class="mt-6 text-lg leading-8 text-stone-300"><%= t("contact.body") %></p>
 
     <div class="mt-8 space-y-4">
-      <%= mail_to t("contact.public_email"), t("contact.public_email"), class: "block text-lg font-black uppercase text-orange-300 hover:text-orange-200" %>
-      <%= link_to t("contact.instagram"), t("contact.instagram_url"), class: "block text-lg font-black uppercase text-violet-300 hover:text-violet-200", target: "_blank", rel: "noopener" %>
+      <%= mail_to t("contact.public_email"), nil, class: "contact-link text-lg font-black uppercase text-orange-300 hover:text-orange-200" do %>
+        <span class="contact-icon contact-icon-mail" aria-hidden="true"></span>
+        <span><%= t("contact.public_email") %></span>
+      <% end %>
+      <%= link_to t("contact.instagram_url"), class: "contact-link text-lg font-black uppercase text-violet-300 hover:text-violet-200", target: "_blank", rel: "noopener" do %>
+        <span class="contact-icon contact-icon-instagram" aria-hidden="true"></span>
+        <span><%= t("contact.instagram") %></span>
+      <% end %>
     </div>
   </div>
 
-  <%= form_with model: @contact_message, url: contact_messages_path(locale: I18n.locale), class: "panel-frame space-y-5 p-5 sm:p-7" do |form| %>
+  <%= form_with model: @contact_message, url: contact_messages_path(locale: I18n.locale), class: "contact-form-panel panel-frame space-y-5 p-5 sm:p-7" do |form| %>
     <% if @contact_message.errors.any? %>
       <div class="border border-red-500/40 bg-red-950/40 p-4 text-sm text-red-100">
         <p class="font-bold"><%= t("contact.errors") %></p>

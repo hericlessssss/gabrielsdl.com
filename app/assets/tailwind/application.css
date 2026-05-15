@@ -217,6 +217,86 @@
     transform: translateY(-0.18rem);
   }
 
+  .contact-link {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.72rem;
+    transition:
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .contact-link:hover,
+  .contact-link:focus-visible {
+    transform: translateY(-0.16rem);
+  }
+
+  .contact-icon {
+    align-items: center;
+    border: 1px solid rgba(253, 186, 116, 0.85);
+    box-shadow: 3px 3px 0 rgba(249, 115, 22, 0.75);
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 1.7rem;
+    justify-content: center;
+    position: relative;
+    width: 1.7rem;
+  }
+
+  .contact-icon-mail::before {
+    border: 2px solid currentColor;
+    content: "";
+    height: 0.78rem;
+    position: absolute;
+    width: 1rem;
+  }
+
+  .contact-icon-mail::after {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    content: "";
+    height: 0.52rem;
+    position: absolute;
+    top: 0.48rem;
+    transform: rotate(45deg);
+    width: 0.52rem;
+  }
+
+  .contact-icon-instagram::before {
+    border: 2px solid currentColor;
+    border-radius: 0.38rem;
+    content: "";
+    height: 1rem;
+    position: absolute;
+    width: 1rem;
+  }
+
+  .contact-icon-instagram::after {
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    box-shadow: 0.31rem -0.31rem 0 -0.18rem currentColor;
+    content: "";
+    height: 0.42rem;
+    position: absolute;
+    width: 0.42rem;
+  }
+
+  .contact-form-panel {
+    transition:
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
+  }
+
+  .contact-form-panel:hover,
+  .contact-form-panel:focus-within {
+    border-color: rgba(253, 186, 116, 0.9);
+    box-shadow:
+      10px 10px 0 rgba(249, 115, 22, 0.78),
+      0 0 0 1px rgba(253, 186, 116, 0.28);
+    transform: translateY(-0.35rem);
+  }
+
   .locale-link {
     align-items: center;
     color: rgb(168, 162, 158);
