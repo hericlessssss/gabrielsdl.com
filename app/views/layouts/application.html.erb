@@ -37,12 +37,14 @@
       <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-5">
         <%= link_to t("site.brand"), localized_root_path(locale: I18n.locale), class: "min-w-0 text-base font-black uppercase tracking-wide sm:text-lg" %>
 
-        <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-xs text-stone-300 sm:text-sm">
-          <%= link_to t("navigation.portfolio"), portfolio_path(locale: I18n.locale), class: "hover:text-white" %>
-          <%= link_to t("navigation.about"), about_path(locale: I18n.locale), class: "hover:text-white" %>
-          <%= link_to t("navigation.contact"), contact_path(locale: I18n.locale), class: "hover:text-white" %>
-          <%= link_to "PT", url_for(locale: :pt), class: "hover:text-white" %>
-          <%= link_to "EN", url_for(locale: :en), class: "hover:text-white" %>
+        <div class="flex flex-wrap items-center justify-end gap-2 text-xs text-stone-300 sm:gap-3 sm:text-sm">
+          <%= navigation_link t("navigation.portfolio"), portfolio_path(locale: I18n.locale), active: controller_name == "portfolio" %>
+          <%= navigation_link t("navigation.about"), about_path(locale: I18n.locale), active: controller_name == "pages" && action_name == "about" %>
+          <%= navigation_link t("navigation.contact"), contact_path(locale: I18n.locale), active: controller_name == "contact_messages" %>
+          <span class="ml-1 flex items-center gap-2">
+            <%= link_to "PT", url_for(locale: :pt), class: "locale-link" %>
+            <%= link_to "EN", url_for(locale: :en), class: "locale-link" %>
+          </span>
         </div>
       </nav>
     </header>

@@ -64,6 +64,59 @@
     background: rgba(23, 23, 23, 0.82);
   }
 
+  .nav-link {
+    align-items: center;
+    border: 1px solid transparent;
+    color: rgb(214, 211, 209);
+    display: inline-flex;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    text-transform: uppercase;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    border-color: rgba(253, 186, 116, 0.8);
+    box-shadow: 4px 4px 0 rgba(249, 115, 22, 0.78);
+    color: white;
+    transform: translateY(-0.12rem);
+  }
+
+  .nav-link-active,
+  .nav-link-active:hover,
+  .nav-link-active:focus-visible {
+    border-color: rgb(253, 186, 116);
+    background: rgb(249, 115, 22);
+    box-shadow: 4px 4px 0 rgba(139, 92, 246, 0.8);
+    color: rgb(10, 10, 10);
+  }
+
+  .locale-link {
+    align-items: center;
+    color: rgb(168, 162, 158);
+    display: inline-flex;
+    font-weight: 800;
+    line-height: 1;
+    padding: 0.45rem 0.2rem;
+    transition:
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .locale-link:hover,
+  .locale-link:focus-visible {
+    color: white;
+    transform: translateY(-0.1rem);
+  }
+
   .panel-frame:nth-child(even) {
     transform: translateY(1.5rem);
   }
