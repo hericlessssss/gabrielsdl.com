@@ -51,6 +51,33 @@ Conclusao: a opcao da Hostinger instalou Docker Engine e Docker Compose. Nao ha 
   - `443/tcp`: HTTPS.
 - Servicos web ativos: nenhum.
 
+## DNS
+
+- Dominio: `gabrielsdl.com`.
+- Provedor DNS: Hostinger.
+- Nameservers:
+  - `aster.dns-parking.com`.
+  - `helios.dns-parking.com`.
+- Registro raiz:
+  - Tipo: `A`.
+  - Nome: `@`.
+  - Valor esperado: `2.24.100.80`.
+- Registro `www`:
+  - Tipo: `CNAME`.
+  - Nome: `www`.
+  - Valor esperado: `gabrielsdl.com`.
+
+Em 2026-05-14 foi removido o registro A antigo `2.57.91.91`.
+
+Validacao esperada:
+
+```powershell
+Resolve-DnsName gabrielsdl.com
+Resolve-DnsName www.gabrielsdl.com
+```
+
+`gabrielsdl.com` deve resolver somente para `2.24.100.80`.
+
 ## Estado Inicial
 
 A VPS esta limpa e adequada para receber deploy via Docker/Kamal.
