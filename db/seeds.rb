@@ -7,7 +7,8 @@ categories = [
   [ "sample-pages", 10, { pt: "Sample pages", en: "Sample pages" } ],
   [ "illustrations", 20, { pt: "Ilustrações", en: "Illustrations" } ],
   [ "covers", 30, { pt: "Capas", en: "Covers" } ],
-  [ "commissions", 40, { pt: "Commissions", en: "Commissions" } ]
+  [ "commissions", 40, { pt: "Commissions", en: "Commissions" } ],
+  [ "works", 50, { pt: "Trabalhos", en: "Works" } ]
 ]
 
 categories.each do |slug, sort_order, names|
@@ -21,6 +22,8 @@ end
 
 sample_pages = PortfolioCategory.find_by!(slug: "sample-pages")
 illustrations = PortfolioCategory.find_by!(slug: "illustrations")
+covers = PortfolioCategory.find_by!(slug: "covers")
+works = PortfolioCategory.find_by!(slug: "works")
 
 projects = [
   {
@@ -103,10 +106,14 @@ artworks = [
   [ "spiderpunk", nil, illustrations, "app/assets/images/portfolio/spiderpunk.jpg", 109 ],
   [ "storm", nil, illustrations, "app/assets/images/portfolio/storm.jpg", 110 ],
   [ "vampirella", nil, illustrations, "app/assets/images/portfolio/vampirella.jpg", 111 ],
-  [ "venom-2025", nil, illustrations, "app/assets/images/portfolio/venom-2025.jpg", 112 ]
+  [ "venom-2025", nil, illustrations, "app/assets/images/portfolio/venom-2025.jpg", 112 ],
+  [ "menu-coletanea", nil, works, "app/assets/images/portfolio/menu-coletanea.jpg", 200, { pt: "Menu Coletânea", en: "Menu Anthology" } ],
+  [ "dead-rabbit-bar", nil, covers, "app/assets/images/portfolio/dead-rabbit-bar.jpg", 300, { pt: "Dead Rabbit Bar", en: "Dead Rabbit Bar" } ],
+  [ "psicodelic-cover", nil, covers, "app/assets/images/portfolio/psicodelic-cover.jpg", 301, { pt: "Psicodelic", en: "Psicodelic" } ],
+  [ "torre-central-morada-da-luz", nil, covers, "app/assets/images/portfolio/torre-central-morada-da-luz.jpg", 302, { pt: "Torre Central: Morada da Luz", en: "Central Tower: Dwelling of Light" } ]
 ]
 
-artworks.each do |slug, project_slug, category, relative_path, sort_order|
+artworks.each do |slug, project_slug, category, relative_path, sort_order, titles|
   artwork = Artwork.find_or_initialize_by(slug: slug)
   artwork.update!(
     project: project_slug.present? ? Project.find_by!(slug: project_slug) : nil,
@@ -118,8 +125,8 @@ artworks.each do |slug, project_slug, category, relative_path, sort_order|
 
   title = slug.humanize
   {
-    pt: "#{title} por Gabriel Santos",
-    en: "#{title} by Gabriel Santos"
+    pt: "#{titles&.fetch(:pt, title) || title} por Gabriel Santos",
+    en: "#{titles&.fetch(:en, title) || title} by Gabriel Santos"
   }.each do |locale, localized_title|
     upsert_translation(
       artwork,
